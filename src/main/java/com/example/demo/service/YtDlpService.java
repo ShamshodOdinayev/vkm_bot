@@ -13,13 +13,13 @@ import java.io.IOException;
 @Service
 public class YtDlpService {
 
-    private static final String YTDLP_PATH = "yt-dlp/yt-dlp.exe"; // yoki "C:\\tools\\yt-dlp.exe"
+    private static final String YTDLP_PATH = "./yt-dlp"; // yoki "C:\\tools\\yt-dlp.exe"
 
     public List<String> searchYoutube(String query) throws IOException {
         List<String> results = new ArrayList<>();
         ProcessBuilder pb = new ProcessBuilder(
                 YTDLP_PATH, "ytsearch10:" + query,
-                "--ffmpeg-location", "yt-dlp/ffmpeg-7.1.1-essentials_build/bin\\ffmpeg.exe",
+                "--ffmpeg-location", "/usr/bin/ffmpeg",
                 "--print", "%(title)s | %(duration_string)s | %(id)s"
         );
 
@@ -44,7 +44,7 @@ public class YtDlpService {
         ProcessBuilder pb = new ProcessBuilder(
                 YTDLP_PATH, "-f", "bestaudio", "-x",
                 "--audio-format", "mp3",
-                "--ffmpeg-location", "yt-dlp/ffmpeg-7.1.1-essentials_build/bin\\ffmpeg.exe",
+                "--ffmpeg-location", "/usr/bin/ffmpeg",
                 "-o", outputTemplate,
                 url
         );
