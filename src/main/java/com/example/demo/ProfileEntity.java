@@ -9,7 +9,7 @@ public class ProfileEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
 }
